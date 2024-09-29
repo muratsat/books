@@ -28,7 +28,7 @@ export default async function UserPage({ params }: { params: { id: string } }) {
           </svg>
         </Link>
       </header>
-      <div className="container flex flex-col items-center gap-12 px-4 py-16">
+      <div className="flex flex-col items-center">
         <div className="flex flex-col items-center gap-2">
           <Image
             src={user.image ?? "/avatar-placeholder.svg"}
@@ -40,12 +40,12 @@ export default async function UserPage({ params }: { params: { id: string } }) {
           <h1 className="text-2xl font-bold">{user.name}</h1>
         </div>
 
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex w-full max-w-2xl flex-col items-center gap-2 p-2">
           {user.files.map((file) => (
             <Link
               href={file.url ?? "#"}
               key={file.url}
-              className="rounded-lg border-2 border-gray-400 bg-gradient-to-r from-[#f1eff2] to-[#ececef] p-3"
+              className="m-1 w-full rounded-lg border-2 border-gray-400 bg-gradient-to-r from-[#f1eff2] to-[#ececef] p-3"
             >
               {file.name}
             </Link>
