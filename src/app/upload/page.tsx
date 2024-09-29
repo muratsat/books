@@ -7,6 +7,24 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-[100dvh] flex-col items-center bg-gradient-to-b from-[#ecdeff] to-[#abafff]">
+      <header className="w-full flex-col gap-4 p-5">
+        {/* home svg */}
+        <Link href="/" className="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+        </Link>
+      </header>
       <div className="flex w-full max-w-xl flex-col p-5">
         {!session?.user && (
           <div className="flex max-w-lg flex-col items-center gap-4">
