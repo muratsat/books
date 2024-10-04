@@ -2,6 +2,33 @@ import { api } from "@/trpc/server";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { type Metadata } from "next";
+
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: { id: string };
+  },
+  // parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const user = await api.users.getUserProfile({ id: params.id });
+
+  if (!user) return { title: "404" };
+
+  const title = user.name ?? "Books user";
+  const description = `${user.name ?? "User"} profile page`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: user.image ? [{ url: user.image }] : undefined,
+    },
+  };
+}
 
 export default async function UserPage({ params }: { params: { id: string } }) {
   const user = await api.users.getUserProfile({ id: params.id });
